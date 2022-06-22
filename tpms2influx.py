@@ -51,10 +51,13 @@ def main():
                 if 'id' in k:
                     measurement = v
                 if 'pressure' in k:
-                    pressure_change = convert_pressure(v, "kPa")
-                    pressure_change = round(pressure_change, 1)
-                    print("pressure_PSI", pressure_change)
-                    pressure = pressure_change
+                    if 'kPa' in k:
+                        pressure_change = convert_pressure(v, "kPa")
+                        pressure_change = round(pressure_change, 1)
+                        print("pressure_PSI", pressure_change)
+                        pressure = pressure_change
+                    else:
+                        pressure = v
                 if k == "temperature_C":
                     temp_change = convert_temp(v, "C")
                     temp_change = round(temp_change, 1)
